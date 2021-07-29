@@ -160,7 +160,7 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5">
                     <div class="card col-lg-3 col-md-6 col-sm-12">
-                    <img class="card-img" src="assets/img/faculty/yh-li.jpg" alt="Y.H. Lee">
+                    <div class="image-wrapper"><img class="card-img animate-image" src="assets/img/faculty/yh-li.jpg" alt="Y.H. Lee"></div>
                     <div class="info">
                         <h4>YANG-HAN LEE</h4>
                         <p class="title">Director, Professor</p>
@@ -171,7 +171,7 @@
                     </div>
                     </div>
                     <div class="card col-lg-3 col-md-6 col-sm-12">
-                    <img class="card-img" src="assets/img/faculty/cc-wong.jpg" alt="C.C. Wong">
+                    <div class="image-wrapper"><img class="card-img animate-image" src="assets/img/faculty/cc-wong.jpg" alt="C.C. Wong"></div>
                     <div class="info">
                         <h4>CHING-CHANG WONG</h4>
                         <p class="title">Former director, Professor</p>
@@ -182,7 +182,7 @@
                     </div>
                     </div>
                     <div class="card col-lg-3 col-md-6 col-sm-12">
-                    <img class="card-img" src="assets/img/faculty/sa-li.jpg" alt="S.A. Li">
+                    <div class="image-wrapper"><img class="card-img animate-image" src="assets/img/faculty/sa-li.jpg" alt="S.A. Li"></div>
                     <div class="info">
                         <h4>Shih-An Li</h4>
                         <p class="title">Associate Professor</p>
@@ -193,7 +193,7 @@
                     </div>
                     </div>
                     <div class="card col-lg-3 col-md-6 col-sm-12">
-                    <img class="card-img" src="assets/img/faculty/cc-liu.jpg" alt="C.C. Liu">
+                    <div class="image-wrapper"><img class="card-img animate-image" src="assets/img/faculty/cc-liu.jpg" alt="C.C. Liu"></div>
                     <div class="info">
                         <h4>CHIH-CHENG LIU</h4>
                         <p class="title">Assistant Professor</p>
@@ -248,11 +248,10 @@
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
         <script>
-            const observer = new IntersectionObserver(entries => {
+            const observer_counter = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     const counter = entry.target.querySelector('.counter');
                     if (entry.isIntersecting) {
-                        console.log("intersecting");
                         counter.classList.add('counter-animation');
                         return;
                     }
@@ -261,7 +260,21 @@
             });
             // observer.observe(document.querySelector('.counter-wrapper'));
             const counters = document.querySelectorAll('.counter-wrapper');
-            counters.forEach(counter => observer.observe(counter));
+            counters.forEach(counter => observer_counter.observe(counter));
+
+            const observer_image = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    const image = entry.target.querySelector('.animate-image');
+                    if (entry.isIntersecting) {
+                        console.log("image intersecting")
+                        image.classList.add('is-visible');
+                        return;
+                    }
+                    image.classList.remove('is-visible');
+                });
+            });
+            const images = document.querySelectorAll('.image-wrapper');
+            images.forEach(image => observer_image.observe(image));
         </script>
     </body>
 </html>

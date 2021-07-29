@@ -11124,3 +11124,19 @@ header.masthead h1, header.masthead .h1 {
     --num-robots: var(var(--num-robots));
   }
 }
+.animate-image{
+  opacity: 0;
+  transform: translate(1.2em, 0.8em);
+  /* transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out; */
+  -webkit-transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+  -moz-transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+  -ms-transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+  -o-transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+  will-change: transform, opacity;
+}
+
+.animate-image.is-visible {
+  opacity: 1;
+  transform: translate(0em, 0em);
+}
