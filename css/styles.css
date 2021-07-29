@@ -11066,3 +11066,61 @@ header.masthead h1, header.masthead .h1 {
 .text-contact span {
   margin-left: 0.5em;
 }
+@property --num-total {
+  syntax: '<integer>';
+  initial-value: 284;
+  inherits: false;
+}
+@property --num-gold {
+  syntax: '<integer>';
+  initial-value: 93;
+  inherits: false;
+}
+@property --num-robots {
+  syntax: '<integer>';
+  initial-value: 56;
+  inherits: false;
+}
+.counter {
+  font-size: 1.8em;
+  font-weight: bolder;
+}
+.counter-animation[name="total"]{
+  animation: counter-total 3s alternate ease-in-out;
+  counter-reset: num var(--num-total);
+}
+.counter-animation[name="gold"]{
+  animation: counter-gold 3s alternate ease-in-out;
+  counter-reset: num var(--num-gold);
+}
+.counter-animation[name="robots"]{
+  animation: counter-robots 3s alternate ease-in-out;
+  counter-reset: num var(--num-robots);
+}
+.counter-animation::after {
+  content: counter(num);
+}
+@keyframes counter-total{
+  from {
+    --num-total: 0;
+  }
+  to {
+    --num-total: var(var(--num-total));
+  }
+}
+@keyframes counter-gold{
+  from {
+    --num-gold: 0;
+  }
+  to {
+    --num-gold: var(var(--num-gold));
+  }
+}
+@keyframes counter-robots{
+  from {
+    --num-robots: 0;
+  }
+  to {
+    --num-robots: var(var(--num-robots));
+  }
+}

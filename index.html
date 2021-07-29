@@ -126,7 +126,9 @@
                             <div class="mb-2"><i class="fas fa-award fs-1 text-primary"></i></div>
                             <h3 class="h4 mb-2">Total awards</h3>
                             <!-- <p class="text-muted mb-0">Our themes are updated regularly to keep them bug free!</p> -->
-                            <h3 class="text-muted mb-0">284</h3>
+                            <div class="counter-wrapper">
+                            <div class="counter text-muted mb-0 h3-font" name="total"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 text-center">
@@ -134,14 +136,18 @@
                             <!-- <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div> -->
                             <div class="mb-2"><i class="fas fa-trophy fs-1 text-primary"></i></div>
                             <h3 class="h4 mb-2">Gold medals</h3>
-                            <h3 class="text-muted mb-0">93</h3>
+                            <div class="counter-wrapper">
+                            <div class="counter text-muted mb-0" name="gold"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 text-center">
                         <div class="mt-5">
                             <div class="mb-2"><i class="fas fa-robot fs-1 text-primary"></i></div>
                             <h3 class="h4 mb-2">Amount of robots</h3>
-                            <h3 class="text-muted mb-0">56</h3>
+                            <div class="counter-wrapper">
+                            <div class="counter text-muted mb-0" name="robots"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -241,5 +247,21 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
+        <script>
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    const counter = entry.target.querySelector('.counter');
+                    if (entry.isIntersecting) {
+                        console.log("intersecting");
+                        counter.classList.add('counter-animation');
+                        return;
+                    }
+                    counter.classList.remove('counter-animation');
+                });
+            });
+            // observer.observe(document.querySelector('.counter-wrapper'));
+            const counters = document.querySelectorAll('.counter-wrapper');
+            counters.forEach(counter => observer.observe(counter));
+        </script>
     </body>
 </html>
