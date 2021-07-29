@@ -11066,3 +11066,8 @@ header.masthead h1, header.masthead .h1 {
 .text-contact span {
   margin-left: 0.5em;
 }
+.vl {
+  border-left: 3px solid #24b3c4;
+  height: 30px;
+  margin-right: 1em;
+}
